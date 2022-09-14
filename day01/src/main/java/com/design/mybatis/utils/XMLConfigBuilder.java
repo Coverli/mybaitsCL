@@ -1,10 +1,9 @@
-
+package com.design.mybatis.utils;
 
 import com.design.mybatis.annotations.Select;
+import com.design.mybatis.cfg.Configuration;
+import com.design.mybatis.cfg.Mapper;
 import com.design.mybatis.io.Resources;
-import com.design.mybatis.sqlsession.Configuration;
-import com.design.mybatis.sqlsession.defaults.DefaultSqlSession;
-import com.design.mybatis.sqlsession.mappers.Mapper;
 import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -23,6 +22,9 @@ import java.util.Map;
  *  用于解析配置文件
  */
 public class XMLConfigBuilder {
+
+
+
     /**
      * 解析主配置文件，把里面的内容填充到DefaultSqlSession所需要的地方
      * 使用的技术：
@@ -81,7 +83,7 @@ public class XMLConfigBuilder {
                     System.out.println("使用的是XML");
                     //表示有resource属性，用的是XML
                     //取出属性的值
-                    String mapperPath = attribute.getValue();//获取属性的值"com/itheima/dao/IUserDao.xml"
+                    String mapperPath = attribute.getValue();//获取属性的值"com/design/dao/IUserDao.xml"
                     //把映射配置文件的内容获取出来，封装成一个map
                     Map<String,Mapper> mappers = loadMapperConfiguration(mapperPath);
                     //给configuration中的mappers赋值
@@ -92,7 +94,7 @@ public class XMLConfigBuilder {
                     //获取class属性的值
                     String daoClassPath = mapperElement.attributeValue("class");
                     //根据daoClassPath获取封装的必要信息
-                    Map<String,Mapper> mappers = loadMapperAnnotation(daoClassPath);
+                    Map<String, Mapper> mappers = loadMapperAnnotation(daoClassPath);
                     //给configuration中的mappers赋值
                     cfg.setMappers(mappers);
                 }
@@ -209,11 +211,4 @@ public class XMLConfigBuilder {
         }
         return mappers;
     }
-
-
-
-
-
-
-
 }

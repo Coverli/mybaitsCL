@@ -1,6 +1,6 @@
+package com.design.mybatis.utils;
 
-
-import com.itheima.mybatis.sqlsession.mappers.Mapper;
+import com.design.mybatis.cfg.Mapper;
 
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Method;
@@ -22,7 +22,7 @@ public class Executor {
         try {
             //1.取出mapper中的数据
             String queryString = mapper.getQueryString();//select * from user
-            String resultType = mapper.getResultType();//com.itheima.domain.User
+            String resultType = mapper.getResultType();//com.design.domain.User
             Class domainClass = Class.forName(resultType);
             //2.获取PreparedStatement对象
             pstm = conn.prepareStatement(queryString);
@@ -61,6 +61,7 @@ public class Executor {
             release(pstm,rs);
         }
     }
+
 
     private void release(PreparedStatement pstm,ResultSet rs){
         if(rs != null){
