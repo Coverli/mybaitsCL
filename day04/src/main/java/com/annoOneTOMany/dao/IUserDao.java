@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * 在mybatis中针对,CRUD一共有四个注解
  *  @Select @Insert @Update @Delete
+ * @CacheNamespace 开启二级缓存
  */
 @CacheNamespace(blocking = true)
 public interface IUserDao {

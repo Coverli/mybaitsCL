@@ -54,8 +54,7 @@ public class UserTest {
 
         sqlSession.clearCache();//此方法也可以清空缓存
 
-   userDao = sqlSession.getMapper(IUserDao.class);
-
+        userDao = sqlSession.getMapper(IUserDao.class);
         User user2 = userDao.findById(41);
         System.out.println(user2);
 

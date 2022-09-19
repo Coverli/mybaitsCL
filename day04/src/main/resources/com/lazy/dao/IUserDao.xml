@@ -24,5 +24,4 @@
     <select id="findById" parameterType="INT" resultType="user">
         select * from user where id = #{uid}
     </select>
-
 </mapper>
